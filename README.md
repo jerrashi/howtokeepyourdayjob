@@ -19,6 +19,10 @@ This GitHub Pages site can be hosted on your own custom domain (e.g., `www.yourd
 7. [Verification and Troubleshooting](#verification-and-troubleshooting)
 8. [Advanced Configuration](#advanced-configuration)
 
+📚 **Additional Resources:**
+- [Quick Start Guide](QUICKSTART.md) - Get set up in 5 steps
+- [DNS Visual Guide](DNS-GUIDE.md) - Diagrams and flowcharts explaining DNS setup
+
 ---
 
 ## Prerequisites
