@@ -1,0 +1,792 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>How to Keep Your Day Job</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Source+Sans+3:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #FAFAF7;
+      --surface: #FFFFFF;
+      --surface-alt: #F3F1EC;
+      --accent: #1B4D3E;
+      --accent-light: #2A7A5F;
+      --accent-glow: rgba(27, 77, 62, 0.12);
+      --text: #1A1A1A;
+      --text-mid: #4A4A4A;
+      --text-dim: #7A7A7A;
+      --border: #E5E2DB;
+      --radius: 12px;
+      --max-w: 720px;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Source Sans 3', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ─── Top banner cross-link ─── */
+    .top-banner {
+      background: var(--accent);
+      color: #fff;
+      text-align: center;
+      padding: 10px 20px;
+      font-size: 0.85rem;
+      font-weight: 500;
+      letter-spacing: 0.02em;
+    }
+
+    .top-banner a {
+      color: #A8D5BA;
+      text-decoration: underline;
+      text-underline-offset: 2px;
+      transition: color 0.2s;
+    }
+
+    .top-banner a:hover { color: #fff; }
+
+    /* ─── Nav ─── */
+    .nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: var(--max-w);
+      margin: 0 auto;
+      padding: 20px 24px;
+    }
+
+    .nav-brand {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .nav-cta {
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--accent);
+      border: 1.5px solid var(--accent);
+      padding: 8px 18px;
+      border-radius: 100px;
+      text-decoration: none;
+      transition: all 0.2s;
+    }
+
+    .nav-cta:hover {
+      background: var(--accent);
+      color: #fff;
+    }
+
+    /* ─── Hero ─── */
+    .hero {
+      max-width: var(--max-w);
+      margin: 0 auto;
+      padding: 80px 24px 64px;
+      text-align: center;
+    }
+
+    .hero-tag {
+      display: inline-block;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent);
+      background: var(--accent-glow);
+      padding: 6px 16px;
+      border-radius: 100px;
+      margin-bottom: 28px;
+    }
+
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.2rem, 5.5vw, 3.2rem);
+      font-weight: 700;
+      line-height: 1.2;
+      color: var(--text);
+      margin-bottom: 20px;
+    }
+
+    .hero h1 em {
+      font-style: italic;
+      color: var(--accent);
+    }
+
+    .hero-sub {
+      font-size: 1.15rem;
+      font-weight: 300;
+      color: var(--text-mid);
+      max-width: 540px;
+      margin: 0 auto 36px;
+      line-height: 1.75;
+    }
+
+    .hero-proof {
+      display: inline-block;
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: 1rem;
+      color: var(--text-mid);
+      border-left: 3px solid var(--accent);
+      padding-left: 16px;
+      text-align: left;
+      max-width: 460px;
+    }
+
+    .hero-proof .transform-arrow {
+      display: block;
+      color: var(--accent);
+      font-style: normal;
+      font-family: 'Source Sans 3', sans-serif;
+      font-weight: 600;
+      font-size: 0.85rem;
+      margin: 6px 0;
+      letter-spacing: 0.05em;
+    }
+
+    /* ─── Sections ─── */
+    .section {
+      max-width: var(--max-w);
+      margin: 0 auto;
+      padding: 64px 24px;
+    }
+
+    .section-divider {
+      width: 48px;
+      height: 2px;
+      background: var(--border);
+      margin: 0 auto 48px;
+    }
+
+    .section-label {
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 12px;
+    }
+
+    .section h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.6rem, 4vw, 2.2rem);
+      font-weight: 600;
+      line-height: 1.25;
+      margin-bottom: 20px;
+    }
+
+    .section p {
+      font-size: 1.05rem;
+      color: var(--text-mid);
+      line-height: 1.8;
+      margin-bottom: 16px;
+    }
+
+    /* ─── Problem section ─── */
+    .problem-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-top: 32px;
+    }
+
+    .problem-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 24px;
+    }
+
+    .problem-card .icon {
+      font-size: 1.5rem;
+      margin-bottom: 10px;
+    }
+
+    .problem-card h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1rem;
+      font-weight: 600;
+      margin-bottom: 6px;
+    }
+
+    .problem-card p {
+      font-size: 0.9rem;
+      color: var(--text-dim);
+      margin-bottom: 0;
+      line-height: 1.6;
+    }
+
+    @media (max-width: 560px) {
+      .problem-grid { grid-template-columns: 1fr; }
+    }
+
+    /* ─── Story section with image placeholder ─── */
+    .story-layout {
+      display: flex;
+      gap: 40px;
+      align-items: flex-start;
+      margin-top: 8px;
+    }
+
+    .story-img {
+      flex-shrink: 0;
+      width: 200px;
+      height: 260px;
+      background: var(--surface-alt);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--text-dim);
+      font-size: 0.8rem;
+      font-weight: 500;
+      text-align: center;
+      line-height: 1.4;
+    }
+
+    .story-text p:last-child { margin-bottom: 0; }
+
+    @media (max-width: 640px) {
+      .story-layout {
+        flex-direction: column;
+        align-items: center;
+      }
+      .story-img { width: 100%; max-width: 280px; height: 200px; }
+    }
+
+    /* ─── What You'll Learn ─── */
+    .learn-layout {
+      display: flex;
+      gap: 40px;
+      align-items: flex-start;
+      margin-top: 8px;
+    }
+
+    .learn-img {
+      flex-shrink: 0;
+      width: 200px;
+      height: 220px;
+      background: var(--surface-alt);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--text-dim);
+      font-size: 0.8rem;
+      font-weight: 500;
+      text-align: center;
+      line-height: 1.4;
+    }
+
+    .learn-list {
+      list-style: none;
+      margin-top: 16px;
+    }
+
+    .learn-list li {
+      position: relative;
+      padding-left: 28px;
+      margin-bottom: 18px;
+      font-size: 1rem;
+      color: var(--text-mid);
+      line-height: 1.6;
+    }
+
+    .learn-list li::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 9px;
+      width: 10px;
+      height: 10px;
+      border: 2px solid var(--accent);
+      border-radius: 50%;
+    }
+
+    .learn-list li strong {
+      color: var(--text);
+      font-weight: 600;
+    }
+
+    @media (max-width: 640px) {
+      .learn-layout {
+        flex-direction: column;
+        align-items: center;
+      }
+      .learn-img { width: 100%; max-width: 280px; height: 180px; }
+    }
+
+    /* ─── Bottom CTA / Email form ─── */
+    .bottom-cta {
+      background: var(--accent);
+      color: #fff;
+      padding: 72px 24px;
+      text-align: center;
+    }
+
+    .bottom-cta-inner {
+      max-width: 520px;
+      margin: 0 auto;
+    }
+
+    .bottom-cta h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.5rem, 4vw, 2rem);
+      font-weight: 600;
+      margin-bottom: 12px;
+      color: #fff;
+    }
+
+    .bottom-cta p {
+      font-size: 1rem;
+      color: rgba(255,255,255,0.75);
+      margin-bottom: 28px;
+    }
+
+    .bottom-form {
+      display: flex;
+      gap: 0;
+      background: rgba(255,255,255,0.12);
+      border: 1px solid rgba(255,255,255,0.2);
+      border-radius: var(--radius);
+      overflow: hidden;
+      transition: border-color 0.3s, box-shadow 0.3s;
+    }
+
+    .bottom-form:focus-within {
+      border-color: rgba(255,255,255,0.5);
+      box-shadow: 0 0 0 4px rgba(255,255,255,0.08);
+    }
+
+    .bottom-form input {
+      flex: 1;
+      padding: 15px 18px;
+      background: transparent;
+      border: none;
+      outline: none;
+      font-family: 'Source Sans 3', sans-serif;
+      font-size: 0.95rem;
+      color: #fff;
+    }
+
+    .bottom-form input::placeholder { color: rgba(255,255,255,0.5); }
+
+    .bottom-form button {
+      padding: 15px 24px;
+      background: #fff;
+      border: none;
+      color: var(--accent);
+      font-family: 'Source Sans 3', sans-serif;
+      font-size: 0.88rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.2s;
+      white-space: nowrap;
+    }
+
+    .bottom-form button:hover { background: #f0f0f0; }
+
+    .bottom-note {
+      margin-top: 12px;
+      font-size: 0.78rem;
+      color: rgba(255,255,255,0.45);
+    }
+
+    .bottom-success {
+      display: none;
+      padding: 14px 20px;
+      background: rgba(255,255,255,0.12);
+      border: 1px solid rgba(255,255,255,0.25);
+      border-radius: var(--radius);
+      color: #fff;
+      font-weight: 500;
+    }
+
+    @media (max-width: 520px) {
+      .bottom-form { flex-direction: column; }
+      .bottom-form button {
+        border-radius: 0 0 calc(var(--radius) - 1px) calc(var(--radius) - 1px);
+      }
+    }
+
+    /* ─── Footer ─── */
+    .footer {
+      max-width: var(--max-w);
+      margin: 0 auto;
+      padding: 32px 24px;
+      text-align: center;
+      font-size: 0.78rem;
+      color: var(--text-dim);
+    }
+
+    .footer a { color: var(--accent); text-decoration: none; }
+    .footer a:hover { text-decoration: underline; }
+
+    /* ─── EMAIL POPUP / MODAL ─── */
+    .modal-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.45);
+      z-index: 1000;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      animation: fadeIn 0.3s ease;
+    }
+
+    .modal-overlay.active { display: flex; }
+
+    .modal {
+      background: var(--surface);
+      border-radius: 16px;
+      padding: 48px 36px 40px;
+      max-width: 440px;
+      width: 100%;
+      text-align: center;
+      position: relative;
+      box-shadow: 0 24px 64px rgba(0,0,0,0.2);
+      animation: slideUp 0.35s ease;
+    }
+
+    .modal-close {
+      position: absolute;
+      top: 16px;
+      right: 18px;
+      background: none;
+      border: none;
+      font-size: 1.4rem;
+      color: var(--text-dim);
+      cursor: pointer;
+      line-height: 1;
+      transition: color 0.2s;
+    }
+
+    .modal-close:hover { color: var(--text); }
+
+    .modal-icon {
+      width: 52px;
+      height: 52px;
+      background: var(--accent-glow);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 20px;
+      font-size: 1.4rem;
+    }
+
+    .modal h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-bottom: 8px;
+      color: var(--text);
+    }
+
+    .modal p {
+      font-size: 0.95rem;
+      color: var(--text-mid);
+      margin-bottom: 24px;
+      line-height: 1.6;
+    }
+
+    .modal-form {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .modal-form input {
+      padding: 14px 16px;
+      border: 1.5px solid var(--border);
+      border-radius: 10px;
+      font-family: 'Source Sans 3', sans-serif;
+      font-size: 0.95rem;
+      color: var(--text);
+      outline: none;
+      transition: border-color 0.2s;
+    }
+
+    .modal-form input:focus {
+      border-color: var(--accent);
+    }
+
+    .modal-form button {
+      padding: 14px;
+      background: var(--accent);
+      border: none;
+      border-radius: 10px;
+      color: #fff;
+      font-family: 'Source Sans 3', sans-serif;
+      font-size: 0.95rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+
+    .modal-form button:hover { background: var(--accent-light); }
+
+    .modal-note {
+      margin-top: 10px;
+      font-size: 0.75rem;
+      color: var(--text-dim);
+    }
+
+    .modal-success {
+      display: none;
+      padding: 14px;
+      background: var(--accent-glow);
+      border-radius: 10px;
+      color: var(--accent);
+      font-weight: 500;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    @keyframes slideUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ─── Scroll animations ─── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Cross-link banner -->
+  <div class="top-banner">
+    Need help finding a job? <a href="consultinginterviewcoaching">Check out our consulting interview coaching →</a>
+  </div>
+
+  <!-- Nav -->
+  <nav class="nav">
+    <a href="#" class="nav-brand">How To Keep Your Day Job</a>
+    <a href="#signup" class="nav-cta">💌 Get Updates!</a>
+  </nav>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="hero-tag">Free Mini Course!</div>
+    <h1>They taught you how to <em>get</em> the job.<br>Nobody taught you how to <em>keep</em> it.</h1>
+    <p class="hero-sub">
+      The unwritten rules of corporate survival — managing up, communicating your value, and building a career that lasts.
+    </p>
+    <div class="hero-proof">
+      <span>"You need to be more proactive."</span>
+      <span class="transform-arrow">↓ &nbsp;18 MONTHS LATER</span>
+      <span>"Your expertise and strategic thinking are invaluable."</span>
+    </div>
+  </section>
+
+  <div class="section-divider"></div>
+
+  <!-- The Problem -->
+  <section class="section reveal">
+    <div class="section-label">The Problem</div>
+    <h2>School prepared you for the interview. Not for Monday morning.</h2>
+    <p>
+      You landed the job. Congratulations! But now you're sitting in meetings where everyone seems to speak a language you were never taught. You're smart — you know the technical stuff — but nobody told you how to navigate the politics, communicate your value, or figure out what "be more strategic" actually means.
+    </p>
+
+    <div class="problem-grid">
+      <div class="problem-card">
+        <div class="icon">🗣️</div>
+        <h3>Managing Up</h3>
+        <p>How to communicate with leadership without overstepping or being invisible</p>
+      </div>
+      <div class="problem-card">
+        <div class="icon">📊</div>
+        <h3>Showing Your Work</h3>
+        <p>Making your contributions visible without being "that person"</p>
+      </div>
+      <div class="problem-card">
+        <div class="icon">⚖️</div>
+        <h3>Competing Priorities</h3>
+        <p>When everything is urgent and you don't know what actually matters</p>
+      </div>
+      <div class="problem-card">
+        <div class="icon">🔄</div>
+        <h3>Taking Feedback</h3>
+        <p>Turning vague criticism into concrete growth without spiraling</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="section-divider"></div>
+
+  <!-- My Story -->
+  <section class="section reveal">
+    <div class="section-label">About Me</div>
+    <h2>From bank teller to Big 4.</h2>
+    <div class="story-layout">
+      <div class="story-img">
+        📸<br>Your photo here
+      </div>
+      <div class="story-text">
+        <p>
+          After college, I was lost — working as a bank teller with no clear path forward. I went to graduate school at the University of Chicago, which opened doors, but didn't prepare me for what came next.
+        </p>
+        <p>
+          I landed a summer internship at a Big 4 consulting firm and got thrown into the deep end. The work wasn't the hard part. The hard part was everything else: reading the room, knowing when to speak up, figuring out what my manager actually wanted when they said "take more ownership."
+        </p>
+        <p>
+          The skills I learned took me from consulting to Big Tech — and when layoffs hit, the community I'd built gave me options. I'm putting together everything I wish someone had told me on day one.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <div class="section-divider"></div>
+
+  <!-- What You'll Learn -->
+  <section class="section reveal">
+    <div class="section-label">What You'll Learn</div>
+    <h2>The stuff they don't teach you in school.</h2>
+    <div class="learn-layout">
+      <div class="learn-img">
+        📖<br>Textbook photo here
+      </div>
+      <div class="learn-content">
+        <p>
+          This isn't generic career advice. It's the specific, tactical knowledge that separates people who stall out from people who get promoted.
+        </p>
+        <ul class="learn-list">
+          <li><strong>The language of leadership</strong> — how to translate what your boss is really asking for and respond in a way that builds trust</li>
+          <li><strong>Visibility without vanity</strong> — frameworks for making sure the right people know what you're doing, naturally</li>
+          <li><strong>Feedback as fuel</strong> — how to solicit, interpret, and act on feedback so it accelerates your career instead of deflating it</li>
+          <li><strong>The first 90 days (and beyond)</strong> — how to onboard yourself at any new role, even when nobody shows you the ropes</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Bottom CTA -->
+  <section class="bottom-cta" id="signup">
+    <div class="bottom-cta-inner">
+      <h2>Stay in the loop.</h2>
+      <p>Let's keep in touch</p>
+      <form class="bottom-form" id="bottomForm">
+        <input type="email" placeholder="you@email.com" required aria-label="Email address">
+        <button type="submit">Sign Up for Updates</button>
+      </form>
+      <div class="bottom-success" id="bottomSuccess">You're in ✓ &nbsp;We'll keep you posted.</div>
+      <p class="bottom-note">No spam, ever. Unsubscribe anytime.</p>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <div class="footer">
+    © 2026 How To Keep Your Day Job &nbsp;·&nbsp; <a href="consultinginterviewcoaching.com">Consulting Interview Coaching</a>
+  </div>
+
+  <!-- ─── EMAIL POPUP MODAL ─── -->
+  <div class="modal-overlay" id="modalOverlay">
+    <div class="modal">
+      <button class="modal-close" id="modalClose" aria-label="Close">×</button>
+      <div class="modal-icon">📬</div>
+      <h2>Get the Free Mini Course</h2>
+      <p>5 lessons on the unwritten rules of corporate survival — delivered to your inbox.</p>
+      <form class="modal-form" id="modalForm">
+        <input type="email" placeholder="you@email.com" required aria-label="Email address">
+        <button type="submit">Send Me the Course</button>
+      </form>
+      <div class="modal-success" id="modalSuccess">Check your inbox ✓</div>
+      <p class="modal-note">Free. No spam. Unsubscribe anytime.</p>
+    </div>
+  </div>
+
+  <script>
+    // ── Scroll reveal ──
+    const reveals = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('visible');
+          observer.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.15 });
+    reveals.forEach(el => observer.observe(el));
+
+    // ── Popup modal for new visitors ──
+    const overlay = document.getElementById('modalOverlay');
+    const POPUP_KEY = 'hktdj_popup_shown';
+
+    // Show popup after 5 seconds for new visitors
+    if (!localStorage.getItem(POPUP_KEY)) {
+      setTimeout(() => {
+        overlay.classList.add('active');
+        localStorage.setItem(POPUP_KEY, 'true');
+      }, 5000);
+    }
+
+    // Close modal
+    document.getElementById('modalClose').addEventListener('click', () => {
+      overlay.classList.remove('active');
+    });
+
+    overlay.addEventListener('click', (e) => {
+      if (e.target === overlay) overlay.classList.remove('active');
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') overlay.classList.remove('active');
+    });
+
+    // ── Modal form submit ──
+    document.getElementById('modalForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const email = this.querySelector('input').value;
+
+      // REPLACE: Send email to your backend / Formspree / Google Sheets
+      console.log('Modal email:', email);
+
+      this.style.display = 'none';
+      document.getElementById('modalSuccess').style.display = 'block';
+      document.querySelector('.modal-note').style.display = 'none';
+
+      setTimeout(() => overlay.classList.remove('active'), 2000);
+    });
+
+    // ── Bottom form submit ──
+    document.getElementById('bottomForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const email = this.querySelector('input').value;
+
+      // REPLACE: Send email to your backend / Formspree / Google Sheets
+      console.log('Bottom email:', email);
+
+      this.style.display = 'none';
+      document.getElementById('bottomSuccess').style.display = 'block';
+    });
+  </script>
+</body>
+</html>
