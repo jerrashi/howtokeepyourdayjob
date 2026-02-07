@@ -694,6 +694,7 @@
       <h2>Stay in the loop.</h2>
       <p>Let's keep in touch</p>
       <form class="bottom-form" id="bottomForm">
+        <input type="text" name="website" style="position:absolute;left:-9999px;opacity:0;height:0;" tabindex="-1" autocomplete="off" aria-hidden="true">
         <input type="email" placeholder="you@email.com" required aria-label="Email address">
         <button type="submit">Sign Up for Updates</button>
       </form>
@@ -715,6 +716,7 @@
       <h2>Get the Free Mini Course</h2>
       <p>5 lessons on the unwritten rules of corporate survival — delivered to your inbox.</p>
       <form class="modal-form" id="modalForm">
+        <input type="text" name="website" style="position:absolute;left:-9999px;opacity:0;height:0;" tabindex="-1" autocomplete="off" aria-hidden="true">
         <input type="email" placeholder="you@email.com" required aria-label="Email address">
         <button type="submit">Send Me the Course</button>
       </form>
@@ -761,16 +763,32 @@
       if (e.key === 'Escape') overlay.classList.remove('active');
     });
 
+    // ── Form submission with honeypot + duplicate prevention ──
+    const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbx6dYIlj58rEMlZBa8GxDvLd2UoCN6RKexnfsrjEoH4GnxbwTlseYv4YtMqM0LRS5ST/exec';
+    const SUBMITTED_KEY = 'hktdj_submitted';
+
+    function submitEmail(form, source) {
+      const honeypot = form.querySelector('input[name="website"]').value;
+      if (honeypot) return false; // Bot filled the hidden field
+
+      if (localStorage.getItem(SUBMITTED_KEY)) return false; // Already submitted
+
+      const email = form.querySelector('input[type="email"]').value;
+
+      fetch(APPS_SCRIPT_URL, {
+        method: 'POST',
+        mode: 'no-cors',
+        body: JSON.stringify({ email: email, source: source })
+      });
+
+      localStorage.setItem(SUBMITTED_KEY, 'true');
+      return true;
+    }
+
     // ── Modal form submit ──
     document.getElementById('modalForm').addEventListener('submit', function(e) {
       e.preventDefault();
-      const email = this.querySelector('input').value;
-
-      // SEND FORM DATA - currently to google sheets backend
-      fetch('https://script.google.com/macros/s/AKfycbx6dYIlj58rEMlZBa8GxDvLd2UoCN6RKexnfsrjEoH4GnxbwTlseYv4YtMqM0LRS5ST/exec', {
-        method: 'POST',
-        body: JSON.stringify({ email: this.querySelector('input').value })
-      });
+      if (!submitEmail(this, 'keep-your-day-job-popup')) return;
 
       this.style.display = 'none';
       document.getElementById('modalSuccess').style.display = 'block';
@@ -782,13 +800,7 @@
     // ── Bottom form submit ──
     document.getElementById('bottomForm').addEventListener('submit', function(e) {
       e.preventDefault();
-      const email = this.querySelector('input').value;
-
-      // SEND FORM DATA - currently to google sheets backend
-      fetch('https://script.google.com/macros/s/AKfycbx6dYIlj58rEMlZBa8GxDvLd2UoCN6RKexnfsrjEoH4GnxbwTlseYv4YtMqM0LRS5ST/exec', {
-        method: 'POST',
-        body: JSON.stringify({ email: this.querySelector('input').value })
-      });
+      if (!submitEmail(this, 'keep-your-day-job-bottom')) return;
 
       this.style.display = 'none';
       document.getElementById('bottomSuccess').style.display = 'block';
