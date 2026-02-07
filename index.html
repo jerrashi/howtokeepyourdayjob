@@ -766,8 +766,11 @@
       e.preventDefault();
       const email = this.querySelector('input').value;
 
-      // REPLACE: Send email to your backend / Formspree / Google Sheets
-      console.log('Modal email:', email);
+      // SEND FORM DATA - currently to google sheets backend
+      fetch('https://script.google.com/macros/s/AKfycbx6dYIlj58rEMlZBa8GxDvLd2UoCN6RKexnfsrjEoH4GnxbwTlseYv4YtMqM0LRS5ST/exec', {
+        method: 'POST',
+        body: JSON.stringify({ email: this.querySelector('input').value })
+      });
 
       this.style.display = 'none';
       document.getElementById('modalSuccess').style.display = 'block';
@@ -781,8 +784,11 @@
       e.preventDefault();
       const email = this.querySelector('input').value;
 
-      // REPLACE: Send email to your backend / Formspree / Google Sheets
-      console.log('Bottom email:', email);
+      // SEND FORM DATA - currently to google sheets backend
+      fetch('https://script.google.com/macros/s/AKfycbx6dYIlj58rEMlZBa8GxDvLd2UoCN6RKexnfsrjEoH4GnxbwTlseYv4YtMqM0LRS5ST/exec', {
+        method: 'POST',
+        body: JSON.stringify({ email: this.querySelector('input').value })
+      });
 
       this.style.display = 'none';
       document.getElementById('bottomSuccess').style.display = 'block';
