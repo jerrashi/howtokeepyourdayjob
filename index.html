@@ -742,6 +742,12 @@
     const overlay = document.getElementById('modalOverlay');
     const POPUP_KEY = 'hktdj_popup_shown';
 
+    // ── If already submitted, show success state on bottom form ──
+    if (localStorage.getItem('hktdj_submitted')) {
+      document.getElementById('bottomForm').style.display = 'none';
+      document.getElementById('bottomSuccess').style.display = 'block';
+    }
+
     // Show popup after 5 seconds for new visitors
     if (!localStorage.getItem(POPUP_KEY)) {
       setTimeout(() => {
