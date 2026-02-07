@@ -763,6 +763,20 @@
       if (e.key === 'Escape') overlay.classList.remove('active');
     });
 
+    // ── Email validation ──
+    function isValidEmail(email) {
+      // Must have @ with something before it, a domain with a dot, and a TLD of 2+ chars
+      const pattern = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+      if (!pattern.test(email)) return false;
+
+      // Block disposable/fake domains
+      const blocked = ['test.com', 'example.com', 'fake.com', 'asdf.com', 'noemail.com'];
+      const domain = email.split('@')[1].toLowerCase();
+      if (blocked.includes(domain)) return false;
+
+      return true;
+    }
+
     // ── Form submission with honeypot + duplicate prevention ──
     const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbx6dYIlj58rEMlZBa8GxDvLd2UoCN6RKexnfsrjEoH4GnxbwTlseYv4YtMqM0LRS5ST/exec';
     const SUBMITTED_KEY = 'hktdj_submitted';
@@ -774,6 +788,13 @@
       if (localStorage.getItem(SUBMITTED_KEY)) return false; // Already submitted
 
       const email = form.querySelector('input[type="email"]').value;
+
+      if (!isValidEmail(email)) {
+        form.querySelector('input[type="email"]').setCustomValidity('Please enter a valid email address.');
+        form.querySelector('input[type="email"]').reportValidity();
+        return false;
+      }
+      form.querySelector('input[type="email"]').setCustomValidity('');
 
       fetch(APPS_SCRIPT_URL, {
         method: 'POST',
